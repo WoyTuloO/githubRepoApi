@@ -17,7 +17,7 @@ If a **non-existing user** is requested, the API returns a `404` response in JSO
 
 * Java 21
 * Spring Boot 3.5
-* [GitHub API (org.kohsuke.github)](https://github.com/hub4j/github-api)
+* [Hub4j GitHub API (org.kohsuke.github)](https://github.com/hub4j/github-api) – Java client for the official GitHub REST API v3
 * JUnit 5
 * TestRestTemplate (Spring Boot Test)
 * Swagger / OpenAPI (springdoc-openapi)
@@ -78,7 +78,7 @@ GET /api/v1/repo/{username}
 
 ---
 
-##  Tests
+## Tests
 
 * `GithubRepoApiIntegrationTest` – integration test verifying the **happy path**:
 
@@ -116,4 +116,6 @@ You can easily test endpoints directly from the browser as well.
 
 ##  Notes
 
-* API works anonymously (without GitHub token), which limits requests to **60/hour**.
+* The application uses the **official GitHub REST API v3** (`https://api.github.com`) as the backing API.
+* Instead of making raw HTTP requests, it leverages the `org.kohsuke.github` client library, which handles communication with GitHub in a clean and reliable way. This ensures full compliance with GitHub developer guidelines and simplifies interaction with the API.
+* The API works anonymously (without a GitHub token), which limits requests to **60/hour**.
